@@ -4,12 +4,13 @@
 
 ABSTRACT
 
-WFsim simulates Wright Fisher populations using given parameters.
+WFSim generates SNP data in Wright-Fisher populations, forward in time. 
 
-This program takes the following as input parameters and  output SNP data in GENEPOP format. 
+Supports customizable parameters such as Effective population size, number of loci, mutation rate, theta, bottleneck duration etc
+
+Output is generated in GENEPOP format
 
 It is strongly recommended that users read the accompanying manuscript before using WFsim. 
-
 
 
 USAGE OVERVIEW
