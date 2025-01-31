@@ -3,8 +3,8 @@ import math
 import argparse
 import sys
 import time
-from offspring_generator import assort
-from coalescent_simulator import coalescent_population_generation
+from ng_simulator import assort
+from initpop_simulator import coalescent_population_generation
 '''
 WFSim generates SNP data in Wright-Fisher populations, forward in time. 
 Supports customizable parameters such as Effective population size, number of loci, mutation rate, theta, bottleneck duration etc
