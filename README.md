@@ -26,7 +26,7 @@ INSTALLATION
    
 3. Clone the repository
 
-        git clone git@github.com:NiharaDeSilva/WFsim.git
+        git clone https://github.com/NiharaDeSilva/WFsim.git
    
 HOW TO RUN
 
