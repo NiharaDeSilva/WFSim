@@ -53,7 +53,7 @@ Run the program
         python3 run.py --m 0.01 --r 0.0001 --lNe 100 --uNe 500 --i 300 --o output/sim_output.txt
 
 
-# Getting Help
+Getting Help
 
 If you have any questions, please feel free to contact us at suhashidesilva@ufl.edu or through the GitHub Issues.
 
