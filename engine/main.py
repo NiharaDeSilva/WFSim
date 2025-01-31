@@ -1,10 +1,9 @@
 import random
 import math
-import argparse
 import sys
 import time
-from ng_simulator import assort
-from initpop_simulator import coalescent_population_generation
+from engine.ng_simulator import assort
+from engine.initpop_simulator import coalescent_population_generation
 '''
 WFSim generates SNP data in Wright-Fisher populations, forward in time. 
 Supports customizable parameters such as Effective population size, number of loci, mutation rate, theta, bottleneck duration etc
@@ -20,79 +19,6 @@ GFSR_STYPE_UNSIGNED_MAX = (2**64) - 1  # Maximum value for an unsigned 64-bit in
 random.seed(time.time())
 extraProportionOfBufferLoci = 2
 
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--m", type=float, help="Minimum Allele Frequency")
-parser.add_argument("--r", type=float, help="Mutation Rate")
-parser.add_argument("--lNe", type=int, help="Lower of Ne Range")
-parser.add_argument("--uNe", type=int, help="Upper of Ne Range")
-parser.add_argument("--lT", type=float, help="Lower of Theta Range")
-parser.add_argument("--uT", type=float, help="Upper of Theta Range")
-parser.add_argument("--lD", type=float, help="Lower of Duration Range")
-parser.add_argument("--uD", type=float, help="Upper of Duration Range")
-parser.add_argument("--i", type=int, help="number of individuals")
-parser.add_argument("--l", type=int, help="number of loci")
-parser.add_argument("--o", type=str, help="The File Name")
-parser.add_argument("--n", type=bool, help="whether to filter the monomorphic loci", default=False)
-args = parser.parse_args()
-
-
-
-'''
-INITIALIZING PARAMETERS
-'''
-minAlleleFreq = 0.05
-if (args.m):
-    minAlleleFreq = float(args.m)
-
-mutationRate = 0.000000012
-if (args.r):
-    mutationRate = float(args.r)
-
-lowerNe = 150
-if (args.lNe):
-    lowerNe = int(args.lNe)
-
-upperNe = 250
-if (args.uNe):
-    upperNe = int(args.uNe)
-
-if (int(lowerNe) > int(upperNe)):
-    print("ERROR:main:lowerNe > upperNe. Fatal Error")
-    exit()
-
-if (int(lowerNe) < 1):
-    print("ERROR:main:lowerNe must be a positive value. Fatal Error")
-    exit()
-
-if (int(upperNe) < 1):
-    print("ERROR:main:upperNe must be a positive value. Fatal Error")
-    exit()
-
-rangeNe = (lowerNe, upperNe)
-
-lowerTheta = 0.000048
-if (args.lT):
-    lowerTheta = float(args.lT)
-
-upperTheta = 0.0048
-if (args.uT):
-    upperTheta = float(args.uT)
-
-rangeTheta = (lowerTheta, upperTheta)
-
-lowerDuration = 2
-if (args.lD):
-    lowerDuration = float(args.lD)
-
-upperDuration = 8
-if (args.uD):
-    upperDuration = float(args.uD)
-
-rangeDuration = (lowerDuration, upperDuration)
-
-lociDirectInput = 40  # Number of loci
-individualsDirectInput = 10  # Number of diploid individuals
 
 
 def parseNLoci(lociDirectInput):
@@ -207,8 +133,7 @@ def simulate_population(lociDirectInput, neRange, rangeTheta, individualsDirectI
     write_output(finalIndividuals, lociDirectInput, individualsDirectInput)
 
 
-
 # simulate_population(lociDirectInput, rangeNe, rangeTheta, individualsDirectInput, minAlleleFreq, mutationRate, rangeDuration)
-simulate_population(args.l, (args.lNe, args.uNe), (args.lT, args.uT), args.i, args.m, args.r, (args.lD, args.uD))
+# simulate_population(args.l, (args.lNe, args.uNe), (args.lT, args.uT), args.i, args.m, args.r, (args.lD, args.uD))
 
 print("----- %s seconds -----" % (time.time() - start_time))
