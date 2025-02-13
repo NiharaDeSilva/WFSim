@@ -88,7 +88,7 @@ def filter_monomorphic_loci(finalIndividuals, lociDirectInput, individualsDirect
     return finalIndividuals
 
 
-def write_output(finalIndividuals, lociDirectInput, individualsDirectInput):
+def write_output(finalIndividuals, lociDirectInput, individualsDirectInput, bottleneck_individuals):
     # Output simulated data
     print("Auto-generated genotype output.")
     for locus_index in range(lociDirectInput):
@@ -100,7 +100,7 @@ def write_output(finalIndividuals, lociDirectInput, individualsDirectInput):
         for locus_index in range(lociDirectInput):
             print(f"{finalIndividuals[j]['mgtype'][locus_index]:02d}{finalIndividuals[j]['pgtype'][locus_index]:02d} ", end="")
         print()
-
+    print(bottleneck_individuals)
 
 
 '''
@@ -130,7 +130,7 @@ def simulate_population(lociDirectInput, neRange, rangeTheta, individualsDirectI
     # Then, generate a set of genotypes for final generation
     assort(individualsDirectInput, finalIndividuals, femalesNext, malesNext, bottleneck_individuals, mutation_rate, totalLoci)
     finalIndividuals = filter_monomorphic_loci(finalIndividuals, lociDirectInput, individualsDirectInput)
-    write_output(finalIndividuals, lociDirectInput, individualsDirectInput)
+    write_output(finalIndividuals, lociDirectInput, individualsDirectInput, bottleneck_individuals)
 
 
 # simulate_population(lociDirectInput, rangeNe, rangeTheta, individualsDirectInput, minAlleleFreq, mutationRate, rangeDuration)
