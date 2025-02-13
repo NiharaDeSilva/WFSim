@@ -50,7 +50,7 @@ positional arguments:
 
 Run the program
 
-        python3 run.py --m 0.01 --r 0.0001 --lNe 100 --uNe 500 --i 300 --o output/sim_output.txt
+        python3 wfsim.py --m 0.01 --r 0.0001 --lNe 100 --uNe 500 --i 300 --o output/sim_output.txt
 
 
 Getting Help
